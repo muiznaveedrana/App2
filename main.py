@@ -24,15 +24,20 @@ Hello my name is Muiz Naveed and I'm a passionate young coder(only 11 years old)
 content2 = """Below you can find some of the apps I have built in Python. Feel free to contact me!"""
 st.write(content2)
 
-col3, col4 = st.columns(2)
+col3,emptycol, col4 = st.columns([1.5, 0.5, 1.5])
 
 with col3:
     df = pandas.read_csv("data.csv", sep=";")
     for index,row in df[:10].iterrows():
         st.header(row["title"])
-        st.image(row["image"])
+        st.write(row["description"])
+        st.image('photos/' + row["image"])
+        st.write(f"[Source Code]({row['url']})")
 
 with col4:
     for index,row in df[10:].iterrows():
         st.header(row["title"])
+        st.write(row["description"])
+        st.image('photos/' + row["image"])
+        st.write(f"[Source Code]({row['url']})")
         
